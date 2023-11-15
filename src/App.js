@@ -9,8 +9,8 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-
 } from "react-router-dom";
+
 
 function App() {
   // dark mode enable or not
@@ -23,8 +23,8 @@ function App() {
       type: type
     })
     // After setting the alert, you can clear it after a certain time if needed.
-        setTimeout(() => { 
-        setAlert(null);
+    setTimeout(() => {
+      setAlert(null);
     }, 900); // This will clear the alert after 5 seconds
   };
 
@@ -37,31 +37,35 @@ function App() {
       setInterval(() => {
         document.title = 'TextUtils is Amazing Mode';
       }, 2000);
-        setInterval(() => {
-        document.title = 'Install is Amazing Mode';
+      setInterval(() => {
+        document.title = 'Install its Amazing';
       }, 1500);
 
     } else {
       setMode("dark");
       showAlert("Dark mode is enabled", "success");
-        document.title = "TextUtils1 - Dark Mode"
+      document.title = "TextUtils1 - Dark Mode"
     }
   };
   return (
     <>
       <Router>
-      <Navbar title="TextUtils1" mode={mode} toggleMode={toggleMode} />
-      {alert && <Alert alert={alert} />} {/* Display the alert when it exists */}
+        <Navbar title="TextUtils1" mode={mode} toggleMode={toggleMode} />
+        <div style={{ height: '40px' }}>
+          {alert && <Alert alert={alert} />} {/* Display the alert when it exists */}
+        </div>
+
         <div className="container my-3">
           <Routes> {/* Replace 'Switch' with 'Routes' */}
             <Route exact path="/about" element={<About />} /> {/* Use 'element' for rendering components */}
             <Route exact path="/" element={<TextForm showAlert={showAlert} heading="Enter Your Text to Analysis" mode={mode} />} />
           </Routes>
-        </div> 
-        </Router>
+        </div>
+
+      </Router>
     </>
   );
 }
-          
+
 
 export default App;
